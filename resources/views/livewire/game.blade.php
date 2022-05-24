@@ -27,7 +27,7 @@
     <div class="flex flex-col items-center justify-center h-full space-y-2">
         @dump($guesses)
         @foreach($guesses as $guess)
-            <x-row.past guess="{{ $guess }}" />
+            <x-row.past :guess="$guess" />
         @endforeach
 
         @if(count($guesses) < 6)
