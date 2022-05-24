@@ -17,7 +17,7 @@ class Game extends Component
         if (count($this->guesses) >= 6 ) return;
 
         $answer = str_split($this->answer);
-        $guesses[] = collect($guess)->transform(function($letter, $index) use(&$answer) {
+        $this->guesses[] = collect($guess)->transform(function($letter, $index) use(&$answer) {
             if ($letter == $answer[$index]){
                 $answer[$index] = null;
                 return [
