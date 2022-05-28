@@ -53,3 +53,21 @@
 [x-cloak] {
     display: none;
 }
+
+.correct
+{
+    @apply bg-green-600;
+    @apply text-white;
+}
+
+.present
+{
+    @apply bg-yellow-500;
+    @apply text-white;
+}
+
+.absent
+{
+    @apply bg-gray-500;
+    @apply text-white;
+}

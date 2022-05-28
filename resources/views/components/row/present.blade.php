@@ -1,6 +1,7 @@
 <div
     x-data="currentGuess"
     x-on:keyup.window.stop="inputKey($event.key)"
+    x-on:keyclick.window.stop="inputKey($event.detail)"
     class="flex flex-row space-x-2"
 >
     <div class="flex items-center justify-center w-12 h-12 text-4xl font-semibold uppercase border border-gray-300" x-text="guess[0]"></div>

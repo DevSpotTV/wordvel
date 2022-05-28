@@ -25,17 +25,40 @@
     </header>
 
     <div class="flex flex-col items-center justify-center h-full space-y-2">
-        @dump($guesses)
+        <div @class([
+            'p-1',
+            'my-4',
+            'text-white',
+            'uppercase',
+            'bg-gray-500',
+            'rounded-sm',
+            'hidden' => is_null($state),
+        ])>
+            @if($state == \App\Models\GameState::LOST->value)
+            {{ $answer }}
+            @elseif($state == \App\Models\GameState::WON->value)
+                genius
+            @else
+                Make A Guess
+            @endif
+        </div>
+
         @foreach($guesses as $guess)
-            <x-row.past guess="{{ $guess }}" />
+            <x-row.past :guess=" $guess" />
         @endforeach
 
         @if(count($guesses) < 6)
-            <x-row.present />
+            @if(is_null($state))
+                <x-row.present />
+            @else
+                <x-row.future />
+            @endif
         @endif
 
         @for ($i = count($guesses) + 2; $i <= 6; $i++)
             <x-row.future />
         @endfor
+
+        @include('includes.keyboard', ['keyStatuses' => $keyStatuses])
     </div>
 </div>
