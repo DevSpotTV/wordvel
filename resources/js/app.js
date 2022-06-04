@@ -1,5 +1,11 @@
 import Alpine from 'alpinejs';
+import focus from '@alpinejs/focus';
+import persist from '@alpinejs/persist';
+
 window.Alpine = Alpine;
+Alpine.plugin(focus);
+Alpine.plugin(persist);
+
 document.addEventListener('alpine:init', () => {
     Alpine.data('currentGuess', () => ({
         guess: [],
@@ -11,7 +17,7 @@ document.addEventListener('alpine:init', () => {
             }
 
             if ($key === 'Enter') {
-                Livewire.emit('submitGuess', this.guess)
+                Livewire.emit('submitGuess', this.guess);
                 return;
             }
 

@@ -22,17 +22,17 @@ class Game extends Component
 
         $answer = str_split($this->answer);
 
-        if($guess === $answer) $this->state = GameState::WON->value;
+        if($guess === $answer) $this->state = GameState::WON;
 
         $this->guesses[] = collect($guess)->transform(function($letter, $index) use(&$answer) {
             if ($letter == $answer[$index]){
                 $answer[$index] = null;
 
-                $this->keyStatuses[$letter] = LetterStatus::CORRECT->value;
+                $this->keyStatuses[$letter] = LetterStatus::CORRECT;
 
                 return [
                     'letter' => $letter,
-                    'status' => LetterStatus::CORRECT->value,
+                    'status' => LetterStatus::CORRECT,
                 ];
             }
             return $letter;
@@ -42,23 +42,23 @@ class Game extends Component
             if (in_array($letter, $answer)){
                 $answer[array_search($letter, $answer)] = null;
 
-                if (!array_key_exists($letter, $this->keyStatuses) || $this->keyStatuses[$letter] != LetterStatus::CORRECT->value) $this->keyStatuses[$letter] = LetterStatus::PRESENT->value;
+                if (!array_key_exists($letter, $this->keyStatuses) || $this->keyStatuses[$letter] != LetterStatus::CORRECT) $this->keyStatuses[$letter] = LetterStatus::PRESENT;
 
                 return [
                     'letter' => $letter,
-                    'status' => LetterStatus::PRESENT->value,
+                    'status' => LetterStatus::PRESENT,
                 ];
             }
 
-            if (!array_key_exists($letter, $this->keyStatuses)) $this->keyStatuses[$letter] = LetterStatus::ABSENT->value;
+            if (!array_key_exists($letter, $this->keyStatuses)) $this->keyStatuses[$letter] = LetterStatus::ABSENT;
 
             return [
                 'letter' => $letter,
-                'status' => LetterStatus::ABSENT->value,
+                'status' => LetterStatus::ABSENT,
             ];
         })->toArray();
 
-        if ($this->lostGame()) $this->state = GameState::LOST->value;
+        if ($this->lostGame()) $this->state = GameState::LOST;
     }
 
     public function render(): view
@@ -67,6 +67,6 @@ class Game extends Component
     }
 
     private function lostGame(){
-        return count($this->guesses) == 6 && $this->state != GameState::WON->value;
+        return count($this->guesses) == 6 && $this->state != GameState::WON;
     }
 }

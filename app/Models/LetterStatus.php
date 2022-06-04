@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-enum LetterStatus: string
+class LetterStatus
 {
-    case CORRECT = 'correct';
-    case PRESENT = 'present';
-    case ABSENT = 'absent';
+    public const CORRECT = 'correct';
+    public const PRESENT = 'present';
+    public const ABSENT = 'absent';
 }

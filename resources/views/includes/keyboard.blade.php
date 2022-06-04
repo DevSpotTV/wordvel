@@ -1,4 +1,4 @@
-<div class="fixed bottom-0 flex flex-col items-center pb-2 space-y-3">
+<div class="fixed bottom-0 flex flex-col items-center justify-center pb-2 space-y-3">
     <div class="flex space-x-3">
         <x-key value="q" :keyStatuses="$keyStatuses" />
         <x-key value="w" :keyStatuses="$keyStatuses" />
