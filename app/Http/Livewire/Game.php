@@ -9,6 +9,7 @@ use Illuminate\Contracts\View\View;
 
 class Game extends Component
 {
+    public bool $hardMode = false;
     public array $guesses = [];
     public array $keyStatuses = [];
     public ?string $state = null;
