@@ -1,10 +1,10 @@
 <x-modal x-data="{ show: false}" x-on:showsettings.window="show = true" wire:key='settings-modal'>
     <h2 class="pb-3 text-lg font-bold text-center uppercase" :id="$id('modal-title')" wire:key='help-title'>Settings</h2>
 
-    {{-- <div class="flex flex-col py-3 border-b border-gray-300">
+    <div class="flex flex-col py-3 border-b border-gray-300">
         <x-toggle name="hardMode" label="Hard Mode" x-data="{ value: @entangle('hardMode') }" />
         <p class="text-xs text-gray-500">Any revealed hints must be used in subsequent guesses.</p>
-    </div> --}}
+    </div>
 
     <div class="flex flex-col py-3 border-b border-gray-300">
         <div
